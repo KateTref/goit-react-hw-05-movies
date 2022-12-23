@@ -9,6 +9,10 @@ export const getTrending = async () => {
     return {
       id: film.id,
       title: film.title,
+      date: film.release_date,
+      score: film.vote_average,
     };
   });
 };
+
+// сделать запрос на фильм по id (ориентироваться на то, что написано в дз)
