@@ -18,7 +18,6 @@ export default function MovieDetails() {
       try {
         const { image, title, date, score, overview, genres } =
           await getDetails(id);
-        console.log(genres);
         setImage(image);
         setTitle(title);
         setDate(date);
@@ -30,8 +29,8 @@ export default function MovieDetails() {
       }
     }
     getFilmDetails();
-    // console.log(title);
   }, [id]);
+  console.log(title, genres, image, date, score, overview, error);
   // console.log(title);
 }
 
