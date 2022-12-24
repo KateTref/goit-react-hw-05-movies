@@ -9,10 +9,21 @@ export const getTrending = async () => {
     return {
       id: film.id,
       title: film.title,
-      date: film.release_date,
-      score: film.vote_average,
     };
   });
 };
 
 // сделать запрос на фильм по id (ориентироваться на то, что написано в дз)
+export const getDetails = async id => {
+  const { data } = await axios.get(
+    `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`
+  );
+  return {
+    image: data.poster_path,
+    title: data.title,
+    date: data.release_date,
+    score: data.vote_average,
+    overview: data.overview,
+    genres: data.genres,
+  };
+};

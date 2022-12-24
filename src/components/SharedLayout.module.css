@@ -15,8 +15,8 @@
   padding: 10px 20px;
   text-decoration: none;
 }
-/* 
-.link:hover,
-link:focus {
-  color: blue; 
-} */
+
+.active {
+  composes: link;
+  color: blue;
+}
