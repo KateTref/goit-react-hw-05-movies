@@ -10,7 +10,6 @@ export default function Reviewes() {
   const [reviewes, setReviewes] = useState([]);
 
   const { id } = useParams();
-  console.log(id);
 
   useEffect(() => {
     async function onGetReviewes() {
@@ -19,7 +18,7 @@ export default function Reviewes() {
         const reviewes = await getReviewes(id);
         setReviewes(reviewes);
       } catch {
-        setError('Sorry, we can not get data.');
+        setError("We don't have any review about this movie");
       } finally {
         setIsLoading(false);
       }

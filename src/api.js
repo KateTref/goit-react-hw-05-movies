@@ -52,3 +52,15 @@ export const getReviewes = async id => {
     };
   });
 };
+
+export const getByKeywords = async query => {
+  const { data } = await axios.get(
+    `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${API_KEY}&language=en-US&page=1&include_adult=false`
+  );
+  return data.results.map(film => {
+    return {
+      id: film.id,
+      title: film.title,
+    };
+  });
+};

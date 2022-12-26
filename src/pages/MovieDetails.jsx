@@ -1,6 +1,6 @@
 // import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState, Suspense, useMemo } from 'react';
-import { Outlet, useParams, Link } from 'react-router-dom';
+import { Outlet, useParams, Link, useLocation } from 'react-router-dom';
 import { getDetails } from 'api';
 import css from './MovieDetails.module.css';
 import Loader from 'components/Loader';
@@ -15,6 +15,8 @@ export default function MovieDetails() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const { id } = useParams();
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/movies';
 
   useEffect(() => {
     async function getFilmDetails() {
@@ -45,6 +47,7 @@ export default function MovieDetails() {
 
   return (
     <>
+      <Link to={backLinkHref}>Go back</Link>
       <div className={css.descriptionWrapper}>
         {error && <p>{error}</p>}
         {isLoading && <Loader />}

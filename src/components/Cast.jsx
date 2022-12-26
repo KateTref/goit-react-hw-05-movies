@@ -16,10 +16,9 @@ export default function Cast() {
       try {
         setIsLoading(true);
         const actors = await getCasts(id);
-        console.log(actors);
         setActors(actors);
       } catch {
-        setError('Sorry, we can not get data.');
+        setError("We don't have any cast about this movie");
       } finally {
         setIsLoading(false);
       }
@@ -28,9 +27,9 @@ export default function Cast() {
   }, [id]);
   return (
     <>
+      {error && <p>{error}</p>}
+      {isLoading && <Loader />}
       <ul>
-        {error && <p>{error}</p>}
-        {isLoading && <Loader />}
         {actors.map(actor => {
           return (
             <li key={actor.name}>
