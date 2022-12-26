@@ -4,6 +4,7 @@ import { MovieForm } from 'components/MovieForm';
 import { getByKeywords } from 'api';
 import MovieList from 'components/MovieList';
 import Loader from '../components/Loader';
+import css from './Movies.module.css';
 
 export default function Movies() {
   const [isLoading, setIsLoading] = useState(false);
@@ -35,11 +36,11 @@ export default function Movies() {
   };
 
   return (
-    <>
+    <div className={css.moviesWrapper}>
       <MovieForm onSubmit={handleSubmit} value={filmQuery} />
       {error && <p>{error}</p>}
       {isLoading && <Loader />}
       <MovieList films={films} />
-    </>
+    </div>
   );
 }

@@ -6,6 +6,11 @@ export default function MovieList({ films }) {
     <ul>
       {films.map(film => (
         <li key={film.id}>
+          <img
+            src={`https://image.tmdb.org/t/p/w300/${film.poster}`}
+            alt={film.title}
+            width={300}
+          ></img>
           <Link to={`${film.id}`} state={{ from: location }}>
             {film.title}
           </Link>

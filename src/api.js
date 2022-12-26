@@ -9,6 +9,7 @@ export const getTrending = async () => {
     return {
       id: film.id,
       title: film.title,
+      poster: film.poster_path,
     };
   });
 };
@@ -61,6 +62,7 @@ export const getByKeywords = async query => {
     return {
       id: film.id,
       title: film.title,
+      poster: film.poster_path,
     };
   });
 };

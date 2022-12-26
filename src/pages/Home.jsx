@@ -31,13 +31,18 @@ export default function Home() {
   // if (error !== null) notify();
 
   return (
-    <div>
-      <h1>Trending today</h1>
+    <div className={css.homeWrapper}>
+      <h1 className={css.homeTitle}>Trending today</h1>
       {error && <p>{error}</p>}
       {isLoading && <Loader />}
-      <ul>
+      <ul className={css.list}>
         {films.map(film => (
-          <li key={film.id}>
+          <li key={film.id} className={css.item}>
+            <img
+              src={`https://image.tmdb.org/t/p/w300/${film.poster}`}
+              alt={film.title}
+              width={300}
+            ></img>
             <Link
               className={css.link}
               to={`movies/${film.id}`}
