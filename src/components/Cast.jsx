@@ -34,10 +34,18 @@ export default function Cast() {
         {actors.map(actor => {
           return (
             <li key={actor.name}>
-              <img
-                src={`https://image.tmdb.org/t/p/w200/${actor.avatar}`}
-                alt={actor.name}
-              ></img>
+              {actor.avatar ? (
+                <img
+                  src={`https://image.tmdb.org/t/p/w200/${actor.avatar}`}
+                  alt={actor.name}
+                ></img>
+              ) : (
+                <img
+                  src="https://img.freepik.com/premium-vector/photo-frame-icon-empty-photo-blank-vector-on-isolated-transparent-background-eps-10_399089-1290.jpg"
+                  alt={actor.name}
+                  width={200}
+                ></img>
+              )}
               <p>{actor.name}</p>
               <p>{actor.character}</p>
             </li>

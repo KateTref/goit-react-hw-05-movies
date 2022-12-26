@@ -68,7 +68,7 @@ export default function MovieDetails() {
           <Link to="cast">Cast</Link>
         </li>
         <li>
-          <Link to="reviwes">Reviwes</Link>
+          <Link to="reviewes">Reviewes</Link>
         </li>
       </ul>
       <Suspense fallback={null}>

@@ -5,6 +5,7 @@ import { lazy } from 'react';
 const Home = lazy(() => import('../pages/Home'));
 const MovieDetails = lazy(() => import('../pages/MovieDetails'));
 const Cast = lazy(() => import('../components/Cast'));
+const Reviewes = lazy(() => import('../components/Reviewes'));
 
 export const App = () => {
   return (
@@ -14,7 +15,7 @@ export const App = () => {
         <Route path="movies" element={<div>Movies</div>} />
         <Route path="movies/:id" element={<MovieDetails />}>
           <Route path="cast" element={<Cast />} />
-          <Route path="reviwes" element={<div>Reviwes</div>} />
+          <Route path="reviewes" element={<Reviewes />} />
         </Route>
       </Route>
     </Routes>

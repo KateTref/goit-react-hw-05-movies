@@ -39,6 +39,16 @@ export const getCasts = async id => {
     };
   });
 };
-// avatar: elem.profile_path,
-// name: elem.name,
-// character: elem.character,
+
+export const getReviewes = async id => {
+  const { data } = await axios.get(
+    `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${API_KEY}&language=en-US&page=1`
+  );
+  return data.results.map(review => {
+    return {
+      author: review.author,
+      content: review.content,
+      reviewId: review.id,
+    };
+  });
+};
