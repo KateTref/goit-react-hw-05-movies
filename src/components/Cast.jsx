@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Loader from './Loader';
+import css from './Cast.module.css';
 
 export default function Cast() {
   const [isLoading, setIsLoading] = useState(false);
@@ -29,14 +30,16 @@ export default function Cast() {
     <>
       {error && <p>{error}</p>}
       {isLoading && <Loader />}
-      <ul>
+      <ul className={css.list}>
         {actors.map(actor => {
           return (
-            <li key={actor.name}>
+            <li className={css.item} key={actor.name}>
               {actor.avatar ? (
                 <img
+                  className={css.img}
                   src={`https://image.tmdb.org/t/p/w200/${actor.avatar}`}
                   alt={actor.name}
+                  width={200}
                 ></img>
               ) : (
                 <img
@@ -45,8 +48,10 @@ export default function Cast() {
                   width={200}
                 ></img>
               )}
-              <p>{actor.name}</p>
-              <p>{actor.character}</p>
+              <div>
+                <p className={css.name}>{actor.name}</p>
+                <p className={css.character}>Character: {actor.character}</p>
+              </div>
             </li>
           );
         })}

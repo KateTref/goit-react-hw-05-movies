@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Loader from './Loader';
+import css from './Reviewes.module.css';
 
 export default function Reviewes() {
   const [isLoading, setIsLoading] = useState(false);
@@ -25,21 +26,26 @@ export default function Reviewes() {
     }
     onGetReviewes();
   }, [id]);
-
+  console.log(reviewes);
+  console.log(reviewes.length === 0);
   return (
     <>
       {isLoading && <Loader />}
       {error && <p>{error}</p>}
-      <ul>
-        {reviewes.map(review => {
-          return (
-            <li key={review.reviewId}>
-              <h1>{review.author}</h1>
-              <p>{review.content}</p>
-            </li>
-          );
-        })}
-      </ul>
+      {reviewes.length === 0 ? (
+        <p>We don't have any reviews about this movie</p>
+      ) : (
+        <ul className={css.list}>
+          {reviewes.map(review => {
+            return (
+              <li className={css.item} key={review.reviewId}>
+                <h1>{review.author}</h1>
+                <p>{review.content}</p>
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </>
   );
 }

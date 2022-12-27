@@ -47,31 +47,38 @@ export default function MovieDetails() {
 
   return (
     <>
-      <Link to={backLinkHref}>Go back</Link>
+      <Link className={css.goBack} to={backLinkHref}>
+        Go back
+      </Link>
       <div className={css.descriptionWrapper}>
         {error && <p>{error}</p>}
         {isLoading && <Loader />}
         <img
+          className={css.img}
           src={`https://image.tmdb.org/t/p/w300/${image}`}
           alt={title}
-          width={240}
+          width={300}
         ></img>
-        <div>
+        <div className={css.description}>
           <h1>{`${title} (${date})`}</h1>
-          <p>User Score: {score}%</p>
+          <p className={css.score}>User Score: {score}%</p>
           <h2>Overview</h2>
-          <p>{overview}</p>
-          <h3>Genres</h3>
+          <p className={css.overview}>{overview}</p>
+          <h2>Genres</h2>
           <p>{genresList}</p>
         </div>
       </div>
-      <p>Additional information</p>
-      <ul>
-        <li>
-          <Link to="cast">Cast</Link>
+      <p className={css.additional}>Additional information</p>
+      <ul className={css.list}>
+        <li className={css.item}>
+          <Link className={css.link} to="cast">
+            Cast
+          </Link>
         </li>
-        <li>
-          <Link to="reviewes">Reviewes</Link>
+        <li className={css.item}>
+          <Link className={css.link} to="reviewes">
+            Reviewes
+          </Link>
         </li>
       </ul>
       <Suspense fallback={null}>
