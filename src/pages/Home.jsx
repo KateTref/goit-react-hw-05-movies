@@ -4,14 +4,12 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import css from './Home.module.css';
 import Loader from '../components/Loader';
-// import { toast } from 'react-toastify';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [films, setFilms] = useState([]);
   const [error, setError] = useState(null);
   const location = useLocation();
-  // const notify = () => toast('Sorry, we can not get data.');
 
   useEffect(() => {
     async function getTrendingFilms() {
@@ -27,8 +25,6 @@ export default function Home() {
     }
     getTrendingFilms();
   }, []);
-
-  // if (error !== null) notify();
 
   return (
     <div className={css.homeWrapper}>
