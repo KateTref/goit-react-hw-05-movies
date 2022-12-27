@@ -14,3 +14,7 @@ h1 {
 p {
   font-size: 18px;
 }
+
+.notification {
+  margin-left: 40px;
+}

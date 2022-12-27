@@ -33,7 +33,9 @@ export default function Reviewes() {
       {isLoading && <Loader />}
       {error && <p>{error}</p>}
       {reviewes.length === 0 ? (
-        <p>We don't have any reviews about this movie</p>
+        <p className={css.notification}>
+          We don't have any reviews about this movie
+        </p>
       ) : (
         <ul className={css.list}>
           {reviewes.map(review => {

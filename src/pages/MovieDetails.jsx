@@ -66,21 +66,22 @@ export default function MovieDetails() {
           <p className={css.overview}>{overview}</p>
           <h2>Genres</h2>
           <p>{genresList}</p>
+          <p className={css.additional}>Additional information</p>
+          <ul className={css.list}>
+            <li className={css.item}>
+              <Link className={css.link} to="cast">
+                Cast
+              </Link>
+            </li>
+            <li className={css.item}>
+              <Link className={css.link} to="reviewes">
+                Reviewes
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
-      <p className={css.additional}>Additional information</p>
-      <ul className={css.list}>
-        <li className={css.item}>
-          <Link className={css.link} to="cast">
-            Cast
-          </Link>
-        </li>
-        <li className={css.item}>
-          <Link className={css.link} to="reviewes">
-            Reviewes
-          </Link>
-        </li>
-      </ul>
+
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
