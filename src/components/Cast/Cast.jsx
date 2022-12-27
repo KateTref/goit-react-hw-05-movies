@@ -2,7 +2,7 @@ import { getCasts } from 'api';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Loader from './Loader';
+import Loader from '../Loader';
 import css from './Cast.module.css';
 
 export default function Cast() {
@@ -18,6 +18,7 @@ export default function Cast() {
         setIsLoading(true);
         const actors = await getCasts(id);
         setActors(actors);
+        setError(null);
       } catch {
         setError("We don't have any cast about this movie");
       } finally {
@@ -40,13 +41,13 @@ export default function Cast() {
                   src={`https://image.tmdb.org/t/p/w200/${actor.avatar}`}
                   alt={actor.name}
                   width={200}
-                ></img>
+                />
               ) : (
                 <img
                   src="https://img.freepik.com/premium-vector/photo-frame-icon-empty-photo-blank-vector-on-isolated-transparent-background-eps-10_399089-1290.jpg"
                   alt={actor.name}
                   width={200}
-                ></img>
+                />
               )}
               <div>
                 <p className={css.name}>{actor.name}</p>

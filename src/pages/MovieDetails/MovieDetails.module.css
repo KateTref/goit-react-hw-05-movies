@@ -1,0 +1,12 @@
+.goBack {
+  padding: 10px 20px;
+  background-color: black;
+  color: tomato;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-left: 40px;
+}
+
+.goBack:hover {
+  color: white;
+}

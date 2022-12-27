@@ -18,14 +18,7 @@ export const getDetails = async id => {
   const { data } = await axios.get(
     `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`
   );
-  return {
-    image: data.poster_path,
-    title: data.title,
-    date: data.release_date,
-    score: data.vote_average,
-    overview: data.overview,
-    genres: data.genres,
-  };
+  return data;
 };
 
 export const getCasts = async id => {

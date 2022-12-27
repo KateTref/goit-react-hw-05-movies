@@ -4,19 +4,6 @@
   align-items: center;
 }
 
-.goBack {
-  padding: 10px 20px;
-  background-color: black;
-  color: tomato;
-  text-decoration: none;
-  border-radius: 5px;
-  margin-left: 40px;
-}
-
-.goBack:hover {
-  color: white;
-}
-
 img {
   margin-right: 40px;
   border-radius: 5px;
@@ -25,9 +12,11 @@ img {
 .description {
   max-width: 600px;
 }
+
 p {
   font-size: 18px;
 }
+
 .score {
   margin-bottom: 10px;
 }

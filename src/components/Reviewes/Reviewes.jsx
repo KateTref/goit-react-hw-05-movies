@@ -2,7 +2,7 @@ import { getReviewes } from 'api';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Loader from './Loader';
+import Loader from '../Loader';
 import css from './Reviewes.module.css';
 
 export default function Reviewes() {
@@ -18,6 +18,7 @@ export default function Reviewes() {
         setIsLoading(true);
         const reviewes = await getReviewes(id);
         setReviewes(reviewes);
+        setError(null);
       } catch {
         setError("We don't have any review about this movie");
       } finally {

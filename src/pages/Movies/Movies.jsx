@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { MovieForm } from 'components/MovieForm';
+import { MovieForm } from 'components/MovieForm/MovieForm';
 import { getByKeywords } from 'api';
-import MovieList from 'components/MovieList';
-import Loader from '../components/Loader';
+import MovieList from 'components/MovieList/MovieList';
+import Loader from '../../components/Loader';
 import css from './Movies.module.css';
 
 export default function Movies() {
   const [isLoading, setIsLoading] = useState(false);
   const [films, setFilms] = useState([]);
   const [error, setError] = useState(null);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const filmQuery = searchParams.get('query') ?? '';
 
   useEffect(() => {
@@ -20,6 +20,7 @@ export default function Movies() {
         setIsLoading(true);
         const filmsData = await getByKeywords(filmQuery);
         setFilms(filmsData);
+        setError(null);
       } catch {
         setError('Sorry, we can not get data.');
       } finally {
@@ -29,18 +30,12 @@ export default function Movies() {
     getQueryFilms();
   }, [filmQuery]);
 
-  const handleSubmit = evt => {
-    evt.preventDefault();
-    setSearchParams({ query: evt.target.elements.query.value });
-    evt.target.reset();
-  };
-
   return (
     <div className={css.moviesWrapper}>
-      <MovieForm onSubmit={handleSubmit} value={filmQuery} />
+      <MovieForm />
       {error && <p>{error}</p>}
       {isLoading && <Loader />}
-      <MovieList films={films} />
+      {films.length > 0 && <MovieList films={films} />}
     </div>
   );
 }

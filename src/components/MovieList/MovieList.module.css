@@ -6,8 +6,10 @@
 }
 
 .item {
-  align-items: center;
+  align-items: stretch;
   display: block;
+  /* flex-direction: column;
+  justify-content: space-between; */
   max-width: 300px;
   /* background-color: blue; */
   padding: 10px 15px;
