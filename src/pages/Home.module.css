@@ -7,10 +7,12 @@
 
 .homeTitle {
   color: black;
+  font-size: 30px;
   text-transform: uppercase;
   max-width: 500px;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 20px;
 }
 
 .list {
