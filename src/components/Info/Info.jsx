@@ -3,12 +3,6 @@ import { useLocation, Link } from 'react-router-dom';
 import css from './Info.module.css';
 
 export default function Info({ movieInfo }) {
-  const image = movieInfo.poster_path;
-  const title = movieInfo.title;
-  const date = movieInfo.release_date.substr(0, 4);
-  const score = String(Math.ceil(Number(movieInfo.vote_average) * 10));
-  const overview = movieInfo.overview;
-
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/movies';
 
@@ -17,6 +11,13 @@ export default function Info({ movieInfo }) {
     movieInfo.genres.map(genre => genreArray.push(genre.name));
     return genreArray.join(', ');
   };
+
+  const image = movieInfo.poster_path;
+  const title = movieInfo.title;
+  const date = movieInfo.release_date.substr(0, 4);
+  const score = String(Math.ceil(Number(movieInfo.vote_average) * 10));
+  const overview = movieInfo.overview;
+  const genres = genresList();
 
   return (
     <>
@@ -33,7 +34,7 @@ export default function Info({ movieInfo }) {
           <h2>Overview</h2>
           <p className={css.overview}>{overview}</p>
           <h2>Genres</h2>
-          <p>{genresList}</p>
+          <p>{genres}</p>
           <p className={css.additional}>Additional information</p>
           <ul className={css.list}>
             <li className={css.item}>

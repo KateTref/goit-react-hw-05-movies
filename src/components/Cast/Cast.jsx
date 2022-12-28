@@ -34,7 +34,7 @@ export default function Cast() {
       <ul className={css.list}>
         {actors.map(actor => {
           return (
-            <li className={css.item} key={actor.name}>
+            <li className={css.item} key={actor.castId}>
               {actor.avatar ? (
                 <img
                   className={css.img}

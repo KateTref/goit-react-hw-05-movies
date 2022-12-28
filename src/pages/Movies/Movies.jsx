@@ -20,6 +20,7 @@ export default function Movies() {
         setIsLoading(true);
         const filmsData = await getByKeywords(filmQuery);
         setFilms(filmsData);
+        console.log(filmsData);
         setError(null);
       } catch {
         setError('Sorry, we can not get data.');
@@ -35,6 +36,11 @@ export default function Movies() {
       <MovieForm />
       {error && <p>{error}</p>}
       {isLoading && <Loader />}
+      {filmQuery !== '' && films.length === 0 && !isLoading && (
+        <p className={css.notify}>
+          We don't have this film. Try do other query
+        </p>
+      )}
       {films.length > 0 && <MovieList films={films} />}
     </div>
   );

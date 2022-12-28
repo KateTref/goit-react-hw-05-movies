@@ -30,6 +30,7 @@ export const getCasts = async id => {
       avatar: elem.profile_path,
       name: elem.name,
       character: elem.character,
+      castId: elem.id,
     };
   });
 };
